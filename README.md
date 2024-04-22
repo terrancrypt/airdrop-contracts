@@ -1,66 +1,20 @@
-## Foundry
+# Airdrop Contract for EVM blockchain
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## AirdropERC20Claimable
 
-Foundry consists of:
+`AirdropERC20Claimable` contract hỗ trợ owner airdrop token ERC20 cho user thông qua một danh sách địa chỉ các user, user sẽ tự mình claim token được nhận.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Khi triển khai contract này, những điều cần có:
 
-## Documentation
+- Address của token ERC20 được phân phối qua airdrop.
+- Tổng số lượng token được phân phối qua airdrop.
+- Địa chỉ của chủ sở hữu token từ đó token sẽ được chuyển ra khi airdrop.
+- UNIX timestamp sau khi kết thúc giai đoạn phân phối airdrop.
+- Số lượng tối đa có thể yêu cầu mỗi ví (airdrop claimming).
+- Một danh sách cho phép tùy chọn merkle root cho các người nhận được phép yêu cầu airdrop.
 
-https://book.getfoundry.sh/
+Khi claim airdrop, user cần có:
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- Địa chỉ để chuyển đến airdrop token.
+- Tổng số lượng token để claim.
+- Bằng chứng về việc được bao gồm trong danh sách merkle root, nếu có.
